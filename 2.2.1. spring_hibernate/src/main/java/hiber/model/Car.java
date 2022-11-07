@@ -5,15 +5,16 @@ import java.util.Objects;
 
 @Entity
 public class Car {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    int id;
 
     @Column
-    private String model;
+    String model;
 
     @Column
-    private int series;
+    int series;
 
     public Car() {
     }
@@ -23,14 +24,13 @@ public class Car {
         this.series = series;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
-
 
     public String getModel() {
         return model;
@@ -51,7 +51,8 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "model='" + model + '\'' +
+                "id=" + id +
+                ", model='" + model + '\'' +
                 ", series=" + series +
                 '}';
     }
@@ -61,7 +62,7 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return series == car.series && Objects.equals(id, car.id) && Objects.equals(model, car.model);
+        return id == car.id && series == car.series && Objects.equals(model, car.model);
     }
 
     @Override
